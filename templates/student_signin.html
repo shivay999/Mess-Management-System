@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Sign In</title>
+</head>
+<body>
+    <h1>Student Sign In</h1>
+    <form action="{{ url_for('student_signin') }}" method="POST">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Sign In</button>
+    </form>
+</body>
+</html>

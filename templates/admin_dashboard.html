@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_admin.css')}}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style media="screen">
+        body {
+            background-image: url("{{ url_for('static', filename='img4.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="{{ url_for('static', filename='image1.jpg')}}" alt="Profile Picture" class="profile-pic">
+                <p class="name">Name: {{ user_name }}</p>
+                <form id="logout-form" action="{{ url_for('logout') }}" method="post">
+                    <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
+            </div>
+        </div>
+        <div class="main-content" >
+            <h1>Mess Management System</h1>
+            <div class="meal-section">
+                <div class="meal-time">
+                    <h2>Meal Count</h2>
+
+                    <table class="count-table">
+                        <tr>
+                            <th>Meal Type</th>
+                            <th>Count</th>
+                        </tr>
+                        <tr>
+                            <td>Breakfast</td>
+                            <td>{{ breakfast_count }}</td>
+                        </tr>
+                        <tr>
+                            <td>Lunch</td>
+                            <td>{{ lunch_count }}</td>
+                        </tr>
+                        <tr>
+                            <td>Dinner</td>
+                            <td>{{ dinner_count }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="action-section">
+                <div class="menu-view">
+                    <h2 style="color: #f7f8fc;background-color: black;opacity: 0.75;text-align: center;padding: 10px;">Update Menu</h2>
+        
+                    <div class="menu">
+                        <button type="button" class="submit-btn"s><a href="/view_admin">View/Edit Menu</a></button>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+       
+    </script>
+</body>
+
+</html>

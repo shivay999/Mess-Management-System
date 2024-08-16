@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='view_menu_style.css') }}">
+    <title>Menu</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='messs.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
+    </style>
+</head>
+<body>
+    <h1>Weekly Menu</h1>
+  
+    <table class="menu-table">
+        <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+            <th>Edit</th> <!-- New column for Edit option -->
+        </tr>
+        {% for item in menu_items %}
+        <tr>
+            <td>{{ item.day_of_week }}</td>
+            <td>{{ item.breakfast }}</td>
+            <td>{{ item.lunch }}</td>
+            <td>{{ item.dinner }}</td>
+            <td><a href="/edit_menu/{{ item.id }}">Edit</a></td> <!-- Edit link -->
+        </tr>
+        {% endfor %}
+    </table>
+    <form id="back-form" action="{{ url_for('back_view_menu') }}">
+        <button class="logout-btn" type="submit">Back</button>
+    </form>
+</body>
+</html>

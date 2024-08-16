@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_stud.css')}}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style media="screen">
+        body {
+            background-image: url("{{ url_for('static', filename='img4.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <img href="{{ url_for('static', filename='image1.jpg')}}" alt="Profile Picture" class="profile-pic">
+                <p class="name">Name: {{ user_name }}</p>
+                <p class="status">
+                    {% if role_id==0 %}
+                            Student: Non - Hostelite
+                        {% elif role_id==2 %}
+                            Student: Hostelite
+                        {% endif %}
+                </p>
+                <form id="logout-form" action="{{ url_for('logout') }}" method="post">
+                    <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Welcome to Mess</h1>
+            <h2 class="moving" align="center">{{today}} Special Menu</h2>
+            <div class="meal-section">
+                <div class="meal-time">
+                    <h2>Breakfast Time:</h2>
+                    <p>8:00 - 8:30 AM</p>
+                    <table class="menu">
+                        <tr><td>{{items.breakfast}}</td></tr>
+                    </table>
+                </div>
+                <div class="meal-time">
+                    <h2>Lunch Time:</h2>
+                    <p>1:00 - 1:30 PM</p>
+                    <table class="menu">
+                        <tr><td>{{items.lunch}}</td></tr>
+        
+                    </table>
+                </div>
+                <div class="meal-time">
+                    <h2>Dinner Time:</h2>
+                    <p>7:30 - 8:00 PM</p>
+                    <table class="menu">
+                        <tr><td>{{items.dinner}}</td></tr>
+            
+                    </table>
+                </div>
+            </div>
+            <!-- /*<form action="/select_meal" method="POST">
+                <label for="meal_type">Select Meal:</label>
+                <select id="meal_type" name="meal_type">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form> -->
+            {% if role_id == 2 %}
+            <div class="meal-action">
+                <h2>Cancel Meal</h2>
+                <form id="cancel-meal-form" method="post" action="{{ url_for('cancel_meal_h') }}">
+                    <div class="menu">
+                        <select id="cancel-meal-select" name="meal_type">
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+            
+            {% elif role_id == 0 %}
+            <div class="action-section">
+                <div class="meal-action">
+                    <h2>Add Meal</h2>
+                    <form id="select-meal-form"  action="{{ url_for('select_meal') }}" method="post" >
+                        <div class="menu">
+                            <select id="add-meal-select" name="meal_type">
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn" onclick="disableMeal()">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="meal-action">
+                <h2>Cancel Meal</h2>
+                <form id="cancel-meal-form" method="post" action="{{ url_for('cancel_meal') }}">
+                    <div class="menu">
+                        <select id="cancel-meal-select" name="meal_type">
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+            {% endif %}
+    <script>
+
+function checkDisabledMeals() {
+            const disabledMeals = JSON.parse('{{ disabled_meals | tojson | safe }}');
+            if (Array.isArray(disabledMeals)) {
+                console.log('Disabled Meals:', disabledMeals);  // Debugging line
+                const selectElement = document.getElementById('add-meal-select');
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    if (disabledMeals.includes(selectElement.options[i].value)) {
+                        selectElement.options[i].disabled = true;  // Disable the option
+                        selectElement.options[i].style.display = 'none';  // Hide the option
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('load', checkDisabledMeals);
+    </script>
+
+    
+    
+        <!-- window.addEventListener('load', checkDisabledMeal);
+    //     function disableMeal() {
+            
+    //     document.getElementById('select-meal-form').addEventListener('submit', function(event) {
+    //     var selectElement = document.getElementById('add-meal-select');
+    //     var selectedOption = selectElement.options[selectElement.selectedIndex];
+    //     selectedOption.disabled = true; // Disable the selected option
+    // });
+    //         const meal = document.getElementById('add-meal-select').value;
+    //         alert(`You have added ${meal} successfully!`);
+    //     }
+
+    //     function cancelMeal() {
+    //         document.getElementById('cancel-meal-form').addEventListener('submit', function(event) {
+    //        var selectElement = document.getElementById('cancel-meal-select');
+    //        var selectedOption = selectElement.options[selectElement.selectedIndex];
+    //        selectedOption.disabled = true; // Dis
+    //         const meal = document.getElementById('cancel-meal-select').value;
+    //         alert(`You have cancelled ${meal} successfully!`);
+    //     }
+
+    //     function logout() {
+    //         alert('You have logged out successfully!');
+    //         // Additional logout functionality can be added here, such as redirecting to a login page
+    //     } -->
+
+
+     <script>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </script>
+</body>
+</html>

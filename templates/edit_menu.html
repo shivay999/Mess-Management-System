@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='view_menu_style.css') }}">
+    <title>Edit Menu</title>
+</head>
+<body>
+    <h1>Edit {{ menu_item.day_of_week }} Menu</h1>
+    <!-- <h2>{{ menu_item.day_of_week }}</h2> Display day of the week as a heading -->
+    <form method="POST">
+        <!-- Hidden input for day_of_week -->
+        <input type="hidden" name="day_of_week" value="{{ menu_item.day_of_week }}">
+        
+        <!-- Editable fields for breakfast, lunch, and dinner -->
+        <label for="breakfast">Breakfast:</label >
+        <input type="text" name="breakfast" value="{{ menu_item.breakfast }}" required><br><br>
+        <label for="lunch">Lunch:</label>
+        <input type="text" name="lunch" value="{{ menu_item.lunch }}" required><br><br>
+        <label for="dinner">Dinner:</label>
+        <input type="text" name="dinner" value="{{ menu_item.dinner }}" required><br><br>
+        
+        <!-- Submit button -->
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

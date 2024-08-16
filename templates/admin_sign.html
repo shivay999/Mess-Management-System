@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Statistics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Meal Statistics</h1>
+    <h2>Meal Information</h2>
+    <div id="meal-stats">
+        <h2>Breakfast</h2>
+        <p>Total: <span id="breakfast-total">{{breakfast}}</span></p>
+        <h2>Lunch</h2>
+        <p>Total: <span id="lunch-total">{{lunch}}</span></p>
+        <h2>Dinner</h2>
+        <p>Total: <span id="dinner-total">{{dinner}}</span></p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch meal statistics from the server
+            $.ajax({
+                url: '/get_meal_statistics', // Change to your backend endpoint
+                type: 'GET',
+                success: function (response) {
+                    // Update the total number of meals for breakfast, lunch, and dinner
+                    $("#breakfast-total").text(response.breakfast);
+                    $("#lunch-total").text(response.lunch);
+                    $("#dinner-total").text(response.dinner);
+                },
+                error: function(error) {
+                    console.log(error);
+                    // Handle error response if needed
+                }
+            });
+        });
+    </script>
+</body>
+</html>

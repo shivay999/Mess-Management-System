@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f8fc;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+    opacity: 0.75;
+    background: black;
+}
+
+.profile {
+    margin-top: 50px;
+
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.name {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    padding: 5% 10%;
+    color: #fff;
+    border: none;
+    margin-left: 30%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.logout-btn i {
+    margin-right: 5px;
+    width: 20%;
+}
+
+.logout-btn:hover {
+    background-color: #e85d4d;
+}
+
+.main-content {
+    width: 80%;
+    padding: 40px;
+    box-sizing: border-box;
+    /* background-color: #fff; */
+    box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+/* .main-content h1 {
+    text-align: center;
+    background-color: #a777e3;
+    padding: 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 30px;
+} */
+.main-content h1 {
+    text-align: center;
+    padding: 15px;
+    color: #fafafa;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+    text-shadow: 16px 8px 18px #cf9d1ddb;
+    background-color: black;
+}
+
+.meal-section, .action-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.meal-time, .meal-action {
+    background-color: #fafafac2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.meal-time h2, .meal-action h2 {
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+}
+
+.meal-time p {
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: black;
+    font-size: medium;
+}
+
+.menu {
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu tr {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu td {
+    padding: 10px;
+    font-size: 1em;
+    text-align: center;
+    font-size: large;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.menu select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.submit-btn {
+    margin-left: 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Adjust padding */
+    cursor: pointer;
+}
+
+.cancel-btn {
+    margin-left: 30px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Adjust padding */
+    cursor: pointer;
+}
+
+@keyframes moveText {
+    0% { transform: translateX(0);  }
+    50% { transform: translateX(50px);  }
+    100% { transform: translateX(0);  }
+}
+
+/* Apply animation to h2 */
+
+.moving {
+    animation: moveText 2s infinite;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 2em;
+    margin: 0;
+    padding: 10px;
+    background: rgb(0 0 0 / 31%);
+    color: #fff;
+}

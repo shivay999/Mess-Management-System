@@ -1,0 +1,63 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Management System </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+    <style media="screen">
+        body {
+            background-image: url("{{ url_for('static', filename='img2.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        div.a2 {
+            font-size: 50px;
+            font-family: Imprint MT Shadow;
+            color: #fbddddf5;
+            text-align: center;
+            background-color: #01102dc9;
+            margin: 0;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        
+        <h1><center><div class="a2"> Mess Management </div></center></h1>
+        
+        <form action="{{ url_for('signin') }}" method="POST" id="login-form">
+            <div class="input-group">
+                <label for="Email">email</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+    
+            <button >Login</button>
+        </form>
+
+    </div>
+
+    <div id="forgot-password-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Forgot Password</h2>
+            <form id="forgot-password-form">
+                <div class="input-group">
+                    <label for="reset-email">Email</label>
+                    <input type="email" id="reset-email" name="reset-email" required>
+                </div>
+                <button type="submit">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='login.js')}}"></script>
+</body>
+</html>
